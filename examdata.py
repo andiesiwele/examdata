@@ -60,7 +60,7 @@ student_age_cs114 = np.array([])
 student_mark_cs114 = np.array([])
 
 #fill arrays for math114 exam with loops taking info from csv files
-with open(student_data_math114.csv,'r') as f: 
+with open('student_data_math114.csv', mode='r', newline='') as f: 
     f.readline()
     for i in range(150): 
         line = f.readline()
@@ -70,12 +70,12 @@ with open(student_data_math114.csv,'r') as f:
         np.append(student_age_math114, x[2])
         np.append(student_mark_math114, x[3])       
 #fill arrays for cs114 exam with loops taking info from csv files
-with open(student_data_cs114.csv,'r') as f:
+with open('student_data_math114.csv', mode='r', newline='') as f:
     f.readline()
     for i in range(150): 
         line = f.readline()
         x = line.split(',')
-        np.append(student_num_cs114, x[0])
+        np.append(student_num_cs114, x[0])  #can i append numpy arrays like this???
         np.append(avg_hours_on_campus_cs114, x[1])
         np.append(student_age_cs114, x[2])
         np.append(student_mark_cs114, x[3])
@@ -110,9 +110,9 @@ eighteen_twenty_five = 0
 twenty_five_thirty_five = 0
 thirt_five_forty_five = 0
 over_forty_five = 0
-with open(student_data_math114.csv,'r') as f:
+with open('student_data_math114.csv', mode='r', newline='') as f:
     f.readline()
-    for i in range(151):
+    for i in range(150):
         line = f.readline()
         line_info = line.split(',')
         if line_info[1] == '18 - 25':
@@ -123,6 +123,7 @@ with open(student_data_math114.csv,'r') as f:
             thirt_five_forty_five += 1
         elif line_info[1] == 'over 45':
             over_forty_five += 1
+######## REPEAT FOR CS114
 
 student_age_num = np.append(eighteen_twenty_five)
 student_age_num = np.append(twenty_five_thirty_five)
@@ -132,21 +133,44 @@ student_age_num = np.append(over_forty_five)
 plt.bar(age_groups,student_age_num)
 plt.show()
 
-'''
-with open(student_data_cs114.csv,'r') as f:
-    f.readline()
-'''
+
 #Use a line graph to show if there is a correlation between higher marks(y) and more time spent on campus(x).
-ypoints = np.array([3, 8, 1, 10])
-plt.plot(ypoints, linestyle = 'solid')
+x = np.array([])
+y = np.array([])
+with open('student_data_math114.csv', mode='r', newline='') as f:
+    f.readline()
+    for i in range(150):
+        line = f.readline()
+        line_info = line.split(',')
+        np.append(x, line_info[3])
+        np.append(y, line_info[2])
+plt.plot(x, y)
 plt.show()
 
-'''
-• Use a scatter chart to plot each student’s mark(y) and the time(x) taken on the examination, in minutes.
-• Use a scatter chart to plot the relationship between time spent on campus(y) and the student’s age(x).
-x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
-y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+#Use a scatter chart to plot each student’s mark(y) and the time(x) taken on the examination, in minutes.
+x = np.array([])
+y = np.array([])
+with open('student_data_math114.csv', mode='r', newline='') as f:
+    f.readline()
+    for i in range(150):
+        line = f.readline()
+        line_info = line.split(',')
+        np.append(y, line_info[3])
+        np.append(x, line_info[4])
 plt.scatter(x, y)
 plt.show()
-'''
+
+# Use a scatter chart to plot the relationship between time spent on campus(y) and the student’s age(x).
+x = np.array([])
+y = np.array([])
+with open('student_data_math114.csv', mode='r', newline='') as f:
+    f.readline()
+    for i in range(150):
+        line = f.readline()
+        line_info = line.split(',')
+        np.append(y, line_info[1])
+        np.append(x, line_info[2])
+plt.scatter(x, y)
+plt.show()
+
 
