@@ -1,5 +1,8 @@
-import examdata
-obj = examdata
+import Question1
+import Question2
+
+obj = Question2
+generate_data = Question1
 
 menu = "==============================================================" + "\n"
 menu = menu + "|                 Exam Data                                   |" + "\n"
@@ -41,15 +44,14 @@ cs_menu = cs_menu + "=========================================================" 
 cs_menu = cs_menu + "Choice:_"
 
 
-
 def main():
     sub_menu = ""
     possible_answers = [1, 2, 3, 4, 5, "X", "x"]
     answer = input(menu)
     if int(answer) == 1:
-        obj.generate_math_exam_data()
+        genarate_data.generate_math_exam_data()
     elif int(answer) == 2:
-        obj.generate_cs_exam_data()
+        genarate_data.generate_cs_exam_data()
     elif int(answer) == 3:
         sub_menu = input(math_menu)
         # all math114 visualisations
