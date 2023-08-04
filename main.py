@@ -49,9 +49,9 @@ def main():
     possible_answers = [1, 2, 3, 4, 5, "X", "x"]
     answer = input(menu)
     if int(answer) == 1:
-        genarate_data.generate_math_exam_data()
+        generate_data.generate_math_exam_data()
     elif int(answer) == 2:
-        genarate_data.generate_cs_exam_data()
+        generate_data.generate_cs_exam_data()
     elif int(answer) == 3:
         sub_menu = input(math_menu)
         # all math114 visualisations

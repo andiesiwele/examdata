@@ -6,15 +6,13 @@ import csv
 import random
 
 # QUESTION 1 Create two datasets in csv files, one for each examination, with 150 rows each.
-age_groups = ['18 - 25', '25 - 35', '35 - 45', 'over 45']
-study_hours = ['1 - 2', '2 - 3', '4 - 5']
 # Writing data to CSV exam files
 csv_headers = ['Student Number', 'Age', 'Average Hours Studying On Campus', 'Student Mark', 'Time Taken on Exam']
 
 def generate_student_data():
     student_number = random.randint(1000, 9999)
     age_group = random.randint(18, 60)
-    hours_studying = random.randint(1, 5)
+    hours_studying = random.uniform(1, 5)
     student_mark = random.randint(0, 130)
     time_taken_on_exam = random.randint(0, 180)
     return [student_number, age_group, hours_studying, student_mark, time_taken_on_exam]

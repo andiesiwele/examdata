@@ -14,29 +14,25 @@ def freq_avg_study_hrs_math114():
     # count number of students in each category of hours using the following counters
     one_two_hours_math114counter = 0
     two_three_hours_math114counter = 0
-    three_four_hours_math114counter  = 0
+    three_four_hours_math114counter = 0
     four_five_hours_math114counter = 0
     with open('student_data_math114.csv', mode='r', newline='') as f:
         f.readline()
         for i in range(150):
             line = f.readline()
             y = line.split(',')
-            if 1 <= int(y[2]) <= 2:
+            if float(y[2]) < 2:
                 one_two_hours_math114counter += 1
-            elif 2 <= int(y[2]) <= 3:
+            elif float(y[2]) < 3:
                 two_three_hours_math114counter += 1
-            elif 3 <= int(y[2]) <= 4:
+            elif float(y[2]) < 4:
                 three_four_hours_math114counter += 1
-            elif 4 <= int(y[2]) <= 5:
+            elif float(y[2]) <= 5:
                 four_five_hours_math114counter += 1
 
     data['Average Hours Studying'] = ['1 - 2', '2 - 3', '3 - 4', '4 - 5']
     data['Frequency'] = [one_two_hours_math114counter, two_three_hours_math114counter, three_four_hours_math114counter, four_five_hours_math114counter]
 
-    # data = {
-    #     'Average Hours Studying': ['1 - 2', '2 - 3', '4 - 5'],
-    #     'Frequency': [one_two_hours_math114counter, two_three_hours_math114counter, four_five_hours_math114counter]
-    # }
 
     # Creating a DataFrame from the frequency table data
     frequency_table_df = pd.DataFrame(data)
@@ -57,23 +53,24 @@ def freq_avg_study_hrs_cs114():
         for i in range(150):
             line = f.readline()
             y = line.split(',')
-            if 1 <= int(y[2]) <= 2:
+            if float(y[2]) < 2:
                 one_two_hours_cs114counter += 1
-            elif 2 <= int(y[2]) <= 3:
+            elif float(y[2]) < 3:
                 two_three_hours_cs114counter += 1
-            elif 3 <= int(y[2]) <= 4:
+            elif float(y[2]) < 4:
                 three_four_hours_cs114counter += 1
-            elif 4 <= int(y[2]) <= 5:
+            elif float(y[2]) <= 5:
                 four_five_hours_cs114counter += 1
 
-
     data['Average Hours Studying'] = ['1 - 2', '2 - 3', '3 - 4', '4 - 5']
-    data['Frequency'] = [one_two_hours_cs114counter, two_three_hours_cs114counter,three_four_hours_cs114counter, four_five_hours_cs114counter]
+    data['Frequency'] = [one_two_hours_cs114counter, two_three_hours_cs114counter, three_four_hours_cs114counter, four_five_hours_cs114counter]
 
-    # data = {
-    #     'Average Hours Studying': ['1 - 2', '2 - 3', '4 - 5'],
-    #     'Frequency': [one_two_hours_cs114counter, two_three_hours_cs114counter, four_five_hours_cs114counter]
-    # }
+
+    # Creating a DataFrame from the frequency table data
+    frequency_table_df = pd.DataFrame(data)
+    heading = "Average Hours Spent on Campus by Math114 Students"
+    print(heading)
+    print(frequency_table_df.to_string(index=False))
     # Creating a DataFrame from the frequency table data
     frequency_table_df = pd.DataFrame(data)
     heading = "Average Hours Spent on Campus by CS114 Students"
@@ -92,11 +89,11 @@ def freq_student_ages_math114():
         for i in range(150):
             line = f.readline()
             y = line.split(',')
-            if 18 <= int(y[1]) < 25:
+            if int(y[1]) <= 25:
                 eighteen_twenty_five_age_math114counter += 1
-            elif 25 <= int(y[1]) < 35:
+            elif int(y[1]) <= 35:
                 twenty_five_thirty_five_age_math114counter += 1
-            elif 35 <= int(y[1]) < 45:
+            elif int(y[1]) <= 45:
                 thirty_five_forty_five_age_math114counter += 1
             elif int(y[1]) > 45:
                 over_forty_five_age_math114counter += 1
@@ -105,10 +102,6 @@ def freq_student_ages_math114():
     data['Age Group'] = ['18 - 25', '25 - 35', '35 - 45', 'over 45']
     data['Frequency'] = [eighteen_twenty_five_age_math114counter, twenty_five_thirty_five_age_math114counter, thirty_five_forty_five_age_math114counter, over_forty_five_age_math114counter]
 
-    # data = {
-    #     'Age Group': ['18 - 25', '25 - 35', '35 - 45', 'over 45'],
-    #     'Frequency': [eighteen_twenty_five_age_math114counter, twenty_five_thirty_five_age_math114counter, thirty_five_forty_five_age_math114counter, over_forty_five_age_math114counter]
-    # }
     # Creating a DataFrame from the frequency table data
     frequency_table_df = pd.DataFrame(data)
     heading = "Math114 Student Age "
@@ -127,11 +120,11 @@ def freq_student_ages_cs114():
         for i in range(150):
             line = f.readline()
             y = line.split(',')
-            if 18 <= int(y[1]) < 25:
+            if int(y[1]) <= 25:
                 eighteen_twenty_five_age_cs114counter += 1
-            elif 25 <= int(y[1]) < 35:
+            elif int(y[1]) <= 35:
                 twenty_five_thirty_five_age_cs114counter += 1
-            elif 35 <= int(y[1]) < 45:
+            elif int(y[1]) <= 45:
                 thirty_five_forty_five_age_cs114counter += 1
             elif int(y[1]) > 45:
                 over_forty_five_age_cs114counter += 1
@@ -164,20 +157,20 @@ def freq_student_marks_math114():
         for i in range(150):
             line = f.readline()
             y = line.split(',')
-            if int(y[3]) < 45:
+            if ((float(y[3]))/130)*100 < 45:
                 under_forty_five_math114 += 1
-            elif 45 <= int(y[3]) < 49:
+            elif ((float(y[3]))/130)*100 < 50:
                 forty_five_forty_nine_math114 += 1
-            elif 50 <= int(y[3]) < 59:
+            elif ((float(y[3]))/130)*100 < 60:
                 fifty_fifty_nine_math114 += 1
-            elif 60 <= int(y[3]) < 69:
+            elif ((float(y[3]))/130)*100 < 70:
                 sixty_sixty_nine_math114 += 1
-            elif 70 <= int(y[3]) < 79:
+            elif ((float(y[3]))/130)*100 < 80:
                 seventy_seventy_nine_math114 += 1
-            elif int(y[3]) > 80:
+            elif ((float(y[3]))/130)*100 >= 80:
                 over_eighty_math114 += 1
 
-    data['Mark'] = ['under 45','45 - 49','50 - 59','60 - 69','70 - 79','over 80']
+    data['Mark'] = ['under 45', '45 - 49', '50 - 59', '60 - 69', '70 - 79', 'over 80']
     data['Frequency'] = [under_forty_five_math114, forty_five_forty_nine_math114, fifty_fifty_nine_math114, sixty_sixty_nine_math114, seventy_seventy_nine_math114, over_eighty_math114]
 
     # data = {
@@ -187,7 +180,7 @@ def freq_student_marks_math114():
 
     # Creating a DataFrame from the frequency table data
     frequency_table_df = pd.DataFrame(data)
-    heading = " Math114 Student Marks "
+    heading = "Math114 Student Marks "
     print(heading)
     print(frequency_table_df.to_string(index=False))
 
@@ -206,17 +199,17 @@ def freq_student_marks_cs114():
         for i in range(150):
             line = f.readline()
             y = line.split(',')
-            if int(y[3]) < 45:
+            if ((float(y[3]))/130)*100 < 45:
                 under_forty_five_cs114 += 1
-            elif 45 <= int(y[3]) < 49:
+            elif ((float(y[3]))/130)*100 < 50:
                 forty_five_forty_nine_cs114 += 1
-            elif 50 <= int(y[3]) < 59:
+            elif ((float(y[3]))/130)*100 < 60:
                 fifty_fifty_nine_cs114 += 1
-            elif 60 <= int(y[3]) < 69:
+            elif ((float(y[3]))/130)*100 < 70:
                 sixty_sixty_nine_cs114 += 1
-            elif 70 <= int(y[3]) < 79:
+            elif ((float(y[3]))/130)*100 < 80:
                 seventy_seventy_nine_cs114 += 1
-            elif int(y[3]) > 80:
+            elif ((float(y[3]))/130)*100 >= 80:
                 over_eighty_cs114 += 1
 
     data['Mark'] = ['under 45','45 - 49','50 - 59','60 - 69','70 - 79','over 80']
@@ -270,7 +263,7 @@ def bar_age_group_math114():
     plt.xlabel('Age Group')
     plt.ylabel('Number of Students')
     # displaying the title
-    plt.title("Bar Graph showing number of Math114 Students per age group")
+    plt.title("Number of Math114 Students Per Age Group")
     plt.bar(x, y)
     plt.show()
 
@@ -309,26 +302,24 @@ def bar_age_group_cs114():
     plt.xlabel('Age Group')
     plt.ylabel('Number of Students')
     # displaying the title
-    plt.title("Bar Graph showing number of CS114 Students per age group")
+    plt.title("Number of CS114 Students Per Age Group")
     plt.bar(x, y)
     plt.show()
 
 
 
-# 2.2.2 a) Use a line graph to show if there is a correlation between higher Math114 marks(y) and more time spent on campus(x).
+# 2.2.2 a) Use a line graph to show if there is a correlation between higher Math114 marks(y) and more time spent on campus studying(x).
 # variables to store num of student in each time category
 def line_marks_study_hrs_math114():
     num_students_one_math114 = 0
     num_students_two_math114 = 0
     num_students_three_math114 = 0
     num_students_four_math114 = 0
-    num_students_five_math114 = 0
 
     sum_grades_one_math114 = 0
     sum_grades_two_math114 = 0
     sum_grades_three_math114 = 0
     sum_grades_four_math114 = 0
-    sum_grades_five_math114 = 0
 
     # get average study hours for each group
     with open('student_data_math114.csv', mode='r', newline='') as f:
@@ -336,43 +327,34 @@ def line_marks_study_hrs_math114():
         for i in range(150):
             line = f.readline()
             y = line.split(',')
-            if int(y[2]) == 1:
-                #get percentage of each student's mark, then add it to grades_students_one_two_math114
-                sum_grades_one_math114 = sum_grades_one_math114 + (int(y[3])/130) *100
+            if float(y[2]) < 2:
+                # get percentage of each student's mark, then add it to grades_students_one_two_math114
+                sum_grades_one_math114 = sum_grades_one_math114 + (int(y[3]) / 130) * 100
                 num_students_one_math114 += 1
-            elif int(y[2]) == 2:
-                sum_grades_two_math114 = sum_grades_two_math114 + (int(y[3])/130) *100
+            elif float(y[2]) < 3:
+                sum_grades_two_math114 = sum_grades_two_math114 + (int(y[3]) / 130) * 100
                 num_students_two_math114 += 1
-            elif int(y[2]) == 3:
-                sum_grades_three_math114 = sum_grades_three_math114 + (int(y[3])/130) *100
+            elif float(y[2]) < 4:
+                sum_grades_three_math114 = sum_grades_three_math114 + (int(y[3]) / 130) * 100
                 num_students_three_math114 += 1
-            elif int(y[2]) == 4:
-                sum_grades_four_math114 = sum_grades_four_math114 + (int(y[3])/130) *100
+            elif float(y[2]) <= 5:
+                sum_grades_four_math114 = sum_grades_four_math114 + (int(y[3]) / 130) * 100
                 num_students_four_math114 += 1
-            elif int(y[2]) == 5:
-                sum_grades_five_math114 = sum_grades_five_math114 + (int(y[3])/130) *100
-                num_students_five_math114 += 1
 
-    avg_one_math114 = sum_grades_one_math114/num_students_one_math114
-    avg_two_math114 = sum_grades_two_math114/num_students_two_math114
-    avg_three_math114 = sum_grades_three_math114/num_students_three_math114
-    avg_four_math114 = sum_grades_four_math114/num_students_four_math114
-    avg_five_math114 = sum_grades_five_math114/num_students_five_math114
-    average = np.array([avg_one_math114, avg_two_math114, avg_three_math114, avg_four_math114, avg_five_math114])
+    avg_one_math114 = sum_grades_one_math114 / num_students_one_math114
+    avg_two_math114 = sum_grades_two_math114 / num_students_two_math114
+    avg_three_math114 = sum_grades_three_math114 / num_students_three_math114
+    avg_four_math114 = sum_grades_four_math114 / num_students_four_math114
 
-    x = np.array([1, 2, 3, 4, 5])
+    x = np.array(['1 - 2', '2 - 3', '3 - 4', '4 - 5'])
+    y = np.array([avg_one_math114, avg_two_math114, avg_three_math114, avg_four_math114])
 
-    # y = np.append(y, num_students_one_two_math114)
-    # y = np.append(y, num_students_two_three_math114)
-    # y = np.append(y, num_students_four_five_math114)
-    # y = np.append(y, num_students_four_five_math114)
-
-    plt.plot(x, average)
+    plt.plot(x, y)
     # labelling x-axis and y-axis
-    plt.xlabel('time spent on campus')
-    plt.ylabel('Student Mark')
+    plt.xlabel('Time Spent on Campus Studying')
+    plt.ylabel('Student Marks')
     # displaying the title
-    plt.title('line graph showing correlation between Math114 marks and time spent on campus')
+    plt.title('Math114 Student Marks and Time Spent on Campus Studying')
     plt.show()
 
 #2.2.2 b) Use a line graph to show if there is a correlation between higher CS114 marks(y) and more time spent on campus(x).
@@ -381,13 +363,11 @@ def line_marks_study_hrs_cs114():
     num_students_two_cs114 = 0
     num_students_three_cs114 = 0
     num_students_four_cs114 = 0
-    num_students_five_cs114 = 0
 
     sum_grades_one_cs114 = 0
     sum_grades_two_cs114 = 0
     sum_grades_three_cs114 = 0
     sum_grades_four_cs114 = 0
-    sum_grades_five_cs114 = 0
 
     # get average study hours for each group
     with open('student_data_cs114.csv', mode='r', newline='') as f:
@@ -395,38 +375,35 @@ def line_marks_study_hrs_cs114():
         for i in range(150):
             line = f.readline()
             y = line.split(',')
-            if int(y[2]) == 1:
+            if float(y[2]) < 2:
                 # get percentage of each student's mark, then add it to grades_students_one_two_math114
-                sum_grades_one_cs114 = sum_grades_one_cs114 + (int(y[3]) / 130) * 100
+                sum_grades_one_cs114 = sum_grades_one_cs114 + (float(y[3]) / 130) * 100
                 num_students_one_cs114 += 1
-            elif int(y[2]) == 2:
-                sum_grades_two_cs114 = sum_grades_two_cs114 + (int(y[3]) / 130) * 100
+            elif float(y[2]) < 3:
+                sum_grades_two_cs114 = sum_grades_two_cs114 + (float(y[3]) / 130) * 100
                 num_students_two_cs114 += 1
-            elif int(y[2]) == 3:
-                sum_grades_three_cs114 = sum_grades_three_cs114 + (int(y[3]) / 130) * 100
+            elif float(y[2]) < 4:
+                sum_grades_three_cs114 = sum_grades_three_cs114 + (float(y[3]) / 130) * 100
                 num_students_three_cs114 += 1
-            elif int(y[2]) == 4:
-                sum_grades_four_cs114 = sum_grades_four_cs114 + (int(y[3]) / 130) * 100
+            elif float(y[2]) < 5:
+                sum_grades_four_cs114 = sum_grades_four_cs114 + (float(y[3]) / 130) * 100
                 num_students_four_cs114 += 1
-            elif int(y[2]) == 5:
-                sum_grades_five_cs114 = sum_grades_five_cs114 + (int(y[3]) / 130) * 100
-                num_students_five_cs114 += 1
 
+# get percentage of each student's mark, then add it to grades_students_one_two_math114
     avg_one_cs114 = sum_grades_one_cs114 / num_students_one_cs114
     avg_two_cs114 = sum_grades_two_cs114 / num_students_two_cs114
     avg_three_cs114 = sum_grades_three_cs114 / num_students_three_cs114
     avg_four_cs114 = sum_grades_four_cs114 / num_students_four_cs114
-    avg_five_cs114 = sum_grades_five_cs114 / num_students_five_cs114
-    average = np.array([avg_one_cs114, avg_two_cs114, avg_three_cs114, avg_four_cs114, avg_five_cs114])
 
-    x = np.array([1, 2, 3, 4, 5])
+    x = np.array(['1 - 2', '2 - 3', '3 - 4', '4 - 5'])
+    y = np.array([avg_one_cs114, avg_two_cs114, avg_three_cs114, avg_four_cs114])
 
-    plt.plot(x, average)
+    plt.plot(x, y)
     # labelling x-axis and y-axis
-    plt.xlabel('time spent on campus')
+    plt.xlabel('Time Spent on Campus Studying')
     plt.ylabel('Student Mark')
     # displaying the title
-    plt.title('line graph showing correlation between CS114 marks and time spent on campus')
+    plt.title('CS114 Student Marks and Time Spent on Campus Studying')
     plt.show()
 
 
@@ -437,7 +414,7 @@ Sort csv file lines asc via bubble sort
 populate x and y numpy arrays 
 plot scatter plot 
 '''
-def sort_array(array):
+def sort_array(array): # sort by time taken
     # bubble sort
     for first_idx, first_item in enumerate(array):
         for second_idx, second_item in enumerate(array):
@@ -448,12 +425,12 @@ def sort_array(array):
                 array[first_idx] = smaller
                 array[second_idx] = bigger
     return array
-
+# sort by study hours
 def sort_array_by_study_time(array):
     # bubble sort
     for first_idx, first_item in enumerate(array):
         for second_idx, second_item in enumerate(array):
-            if int(array[first_idx][2]) < int(array[second_idx][2]):
+            if float(array[first_idx][2]) < float(array[second_idx][2]):
                 # TODO: make sort make sense
                 smaller = array[second_idx]
                 bigger = array[first_idx]
@@ -475,15 +452,15 @@ def scatter_marks_time_math114():
     sorted_array = sort_array(new_array)
     for sorted_item in sorted_array:
         # [student_number, age_group, hours_studying, student_mark, time_taken_on_exam]
-        y = np.append(y, (int(sorted_item[3])/130) * 100)
         x = np.append(x, int(sorted_item[4]))
+        y = np.append(y, (float(sorted_item[3])/130) * 100)
 
     plt.scatter(x, y)
     # labelling x-axis and y-axis
     plt.xlabel('Time Spent On Exam')
     plt.ylabel('Student Mark')
     # # displaying the title
-    plt.title('Scatter Chart of Student Marks and Time spent on Math114 Exam')
+    plt.title('Student Marks and Time spent on Math114 Exam')
     plt.show()
 
 # 2.2.3 b) Use a scatter chart to plot each student’s mark(y) and the time(x) taken on the CS114 examination, in minutes.
@@ -503,20 +480,19 @@ def scatter_marks_time_cs114():
     for sorted_item in sorted_array:
         # [student_number, age_group, hours_studying, student_mark, time_taken_on_exam]
         x = np.append(x, int(sorted_item[4]))
-        y = np.append(y, (int(sorted_item[3]) / 130) * 100)
+        y = np.append(y, (float(sorted_item[3]) / 130) * 100)
 
     plt.scatter(x, y)
     # labelling x-axis and y-axis
     plt.xlabel('Time Spent On Exam')
     plt.ylabel('Student Mark')
     # # displaying the title
-    plt.title('Scatter Chart of Student Marks and Time spent on CS114 Exam')
+    plt.title('Student Marks and Time spent on CS114 Exam')
     plt.show()
 
-# TODO: Complete the below!!!!!!!!!!!!!!!!!!
 #2.2.4 a)  Use a scatter chart to plot the relationship between time spent on campus(y)and age of Math114 students.
 def scatter_study_time_age_math114():
-    x = np.array([])  # time spent
+    x = np.array([])
     y = np.array([])
     new_array = []
     with open('student_data_math114.csv', mode='r', newline='') as f:
@@ -530,8 +506,8 @@ def scatter_study_time_age_math114():
             sorted_array = sort_array_by_study_time(new_array)
             for sorted_item in sorted_array:
                 # [student_number, age_group, hours_studying, student_mark, time_taken_on_exam]
-                x = np.append(x, int(sorted_item[1]))
-                y = np.append(y, int(sorted_item[2]))
+                x = np.append(x, float(sorted_item[1]))
+                y = np.append(y, float(sorted_item[2]))
 
     plt.scatter(x, y)
     #labelling x-axis and y-axis
@@ -557,8 +533,8 @@ def scatter_study_time_age_cs114():
             sorted_array = sort_array_by_study_time(new_array)
             for sorted_item in sorted_array:
                 # [student_number, age_group, hours_studying, student_mark, time_taken_on_exam]
-                x = np.append(x, int(sorted_item[1]))
-                y = np.append(y, int(sorted_item[2]))
+                x = np.append(x, float(sorted_item[1]))
+                y = np.append(y, float(sorted_item[2]))
 
     plt.scatter(x, y)
     #labelling x-axis and y-axis
